@@ -11,6 +11,7 @@ import habit_feature.presentation.home.components.HomeScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import org.koin.core.context.startKoin
+import ui.theme.AppTheme
 
 
 @Composable
@@ -30,8 +31,8 @@ private fun initKoin(){
 
 @Composable
 private fun setView(){
-    MaterialTheme {
-        Navigator(HomeScreen(PaddingValues(vertical = 20.dp))){ navigator ->
+    AppTheme {
+        Navigator(HomeScreen()){ navigator ->
             SlideTransition(navigator)
         }
     }
