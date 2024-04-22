@@ -1,13 +1,16 @@
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
-import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.navigator.Navigator
-import cafe.adriel.voyager.transitions.SlideTransition
+import androidx.compose.ui.Modifier
+import cafe.adriel.voyager.navigator.tab.CurrentTab
+import cafe.adriel.voyager.navigator.tab.TabNavigator
 import di.appModule
 import di.viewModule
-import habit_feature.presentation.home.components.HomeScreen
+import habit_feature.presentation.utils.HabitBottomBar
+import habit_feature.presentation.utils.tabs.HomeTab
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import org.koin.core.context.startKoin
@@ -32,8 +35,14 @@ private fun initKoin(){
 @Composable
 private fun setView(){
     AppTheme {
-        Navigator(HomeScreen()){ navigator ->
-            SlideTransition(navigator)
+        TabNavigator(HomeTab){
+            Scaffold(bottomBar = {
+                HabitBottomBar()
+            }){padding ->
+                Box(modifier = Modifier.fillMaxSize().padding(padding)){
+                    CurrentTab()
+                }
+            }
         }
     }
 }

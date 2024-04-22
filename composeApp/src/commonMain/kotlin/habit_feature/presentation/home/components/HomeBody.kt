@@ -1,8 +1,6 @@
 package habit_feature.presentation.home.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,53 +21,50 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun HomeBody(
-    habits: List<String>,
-    padding: PaddingValues
+    habits: List<String>
 ) {
-    Box(modifier = Modifier.fillMaxSize().padding(padding)){
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ){
-            item {
-                Spacer(modifier = Modifier.height(20.dp))
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
+    ){
+        item {
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                modifier = Modifier.padding(horizontal = 8.dp),
+                text = "Welcome Back, Nazariy Ravlyuk",
+                fontSize = 32.sp,
+                textAlign = TextAlign.Left,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onSecondary)
+            Spacer(modifier = Modifier.height(20.dp))
+        }
+
+        if(habits.isNotEmpty()){
+            item{
+                habits.forEach {
+                    HabitItem(modifier = Modifier.fillMaxWidth().padding(10.dp).height(50.dp))
+                }
+            }
+        }else{
+            item{
                 Text(
                     modifier = Modifier.padding(horizontal = 8.dp),
-                    text = "Welcome Back, Nazariy Ravlyuk",
-                    fontSize = 32.sp,
-                    textAlign = TextAlign.Left,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSecondary)
-                Spacer(modifier = Modifier.height(20.dp))
+                    text = "No tasks yet",
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Normal,
+                    color = MaterialTheme.colorScheme.onSecondary
+                )
             }
+        }
 
-            if(habits.isNotEmpty()){
-                item{
-                    habits.forEach {
-                        HabitItem(modifier = Modifier.fillMaxWidth().padding(10.dp).height(50.dp))
-                    }
-                }
-            }else{
-                item{
-                    Text(
-                        modifier = Modifier.padding(horizontal = 8.dp),
-                        text = "No tasks yet",
-                        fontSize = 18.sp,
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Normal,
-                        color = MaterialTheme.colorScheme.onSecondary
-                    )
-                }
-            }
+        item{
+            Spacer(modifier = Modifier.height(20.dp))
 
-            item{
-                Spacer(modifier = Modifier.height(20.dp))
+            SubsItem()
 
-                SubsItem()
-
-                Spacer(modifier = Modifier.height(20.dp))
-            }
+            Spacer(modifier = Modifier.height(20.dp))
         }
     }
 }
