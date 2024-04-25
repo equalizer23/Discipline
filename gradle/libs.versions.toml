@@ -1,7 +1,7 @@
 [versions]
 agp = "8.2.0"
 android-compileSdk = "34"
-android-minSdk = "24"
+android-minSdk = "26"
 android-targetSdk = "34"
 androidx-activityCompose = "1.9.0"
 compose = "1.6.6"
@@ -10,7 +10,10 @@ kotlin = "1.9.22"
 voyager = "1.0.0"
 koin = "3.5.3"
 coroutines = "1.8.0"
-stately = "2.0.5"
+stately = "2.0.6"
+kamel = "0.9.4"
+ktor = "2.3.10"
+chart = "2.1.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
@@ -25,6 +28,11 @@ navigator-tab = {module = "cafe.adriel.voyager:voyager-tab-navigator", version.r
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 stately-common = { module = "co.touchlab:stately-common", version.ref = "stately" }
+kamel = {module = "media.kamel:kamel-image", version.ref = "kamel"}
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-android = {module = "io.ktor:ktor-client-android", version.ref = "ktor"}
+ktor-client-ios = {module = "io.ktor:ktor-client-ios", version.ref = "ktor"}
+compose-charts = {module = "io.github.maximilianproell:compose-multiplatform-chart", version.ref = "chart"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

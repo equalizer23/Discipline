@@ -9,13 +9,14 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 
 import cafe.adriel.voyager.transitions.SlideTransition
 import habit_feature.presentation.home.components.HomeScreen
+import habit_feature.presentation.profile.components.ProfileScreen
 import habit_feature.presentation.utils.BottomBarItems
 
 object ProfileTab : Tab {
 
     @Composable
     override fun Content() {
-        Navigator(HomeScreen()){ navigator ->
+        Navigator(ProfileScreen()){ navigator ->
             SlideTransition(navigator)
         }
     }
