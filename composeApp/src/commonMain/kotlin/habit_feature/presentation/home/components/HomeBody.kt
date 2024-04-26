@@ -2,6 +2,7 @@ package habit_feature.presentation.home.components
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,10 +28,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import habit_feature.presentation.habit.HabitScreen
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeBody(){
+
+    val navigator = LocalNavigator.currentOrThrow
 
     var habits by remember {
         mutableStateOf(
@@ -79,6 +86,9 @@ fun HomeBody(){
                                 remove(habit)
                                 add(0, habit)
                             }
+                        },
+                        onCardClick = {
+                            navigator.push(HabitScreen())
                         }
                     )
                 }

@@ -45,6 +45,7 @@ fun HabitItem(
     modifier : Modifier = Modifier,
     onComplete : () -> Unit = {},
     onReset: () -> Unit = {},
+    onCardClick: () -> Unit = {},
     isFullyCompleted: Boolean = false
 ) {
     var isClicked by remember { mutableStateOf(false) }
@@ -60,7 +61,8 @@ fun HabitItem(
             shape = RoundedCornerShape(8.dp),
             border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.primary),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background)
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),
+            onClick = onCardClick
         ){
             Row (
                 modifier = Modifier
@@ -84,7 +86,7 @@ fun HabitItem(
             }
         }
 
-        if(isFullyCompleted){
+        if(!isFullyCompleted){
             Card(
                 modifier = Modifier.weight(0.2F).size(50.dp).padding(start = 8.dp),
                 onClick = {
